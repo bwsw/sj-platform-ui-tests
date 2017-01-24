@@ -1,0 +1,1 @@
+# sj-platform-ui-tests
