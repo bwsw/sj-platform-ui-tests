@@ -25,12 +25,6 @@ public class ApplicationManager {
         wd.quit();
     }
 
-    public void waitForElement(String path) {
-        WebDriverWait wait = new WebDriverWait (wd, 10);
-        wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.xpath(path)));
-    }
-
     public ProviderHelper getProviderHelper() {
         return providerHelper;
     }

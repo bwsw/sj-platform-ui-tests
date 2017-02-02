@@ -4,7 +4,13 @@ package com.bwsw.sj.uitests.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 public class BaseHelper {
 
@@ -25,6 +31,18 @@ public class BaseHelper {
         click(locator);
         wd.findElement(locator).clear();
         wd.findElement(locator).sendKeys(text);
+    }
+
+    public void select (By locator, String value) {
+
+        Select select = new Select(wd.findElement(locator));
+        select.selectByValue(value);
+    }
+
+    public void waitForElement(By path) {
+        WebDriverWait wait = new WebDriverWait (wd, 10);
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(path));
     }
 
     public static boolean isAlertPresent(FirefoxDriver wd) {
