@@ -1,16 +1,13 @@
 package com.bwsw.sj.uitests.appmanager;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.List;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class BaseHelper {
 
@@ -45,7 +42,11 @@ public class BaseHelper {
                 .visibilityOfElementLocated(path));
     }
 
-    public static boolean isAlertPresent(FirefoxDriver wd) {
+    public void checkText(String text) {
+        assertTrue(wd.findElement(By.xpath("//html")).getText().contains(text));
+    }
+
+    public boolean isAlertPresent() {
         try {
             wd.switchTo().alert();
             return true;
@@ -53,4 +54,6 @@ public class BaseHelper {
             return false;
         }
     }
+
+
 }

@@ -20,7 +20,6 @@ public class ProviderHelper extends BaseHelper{
     }
 
     public void fillProviderForm(ProviderData providerData) {
-        //select(By.name("providerType"),"zookeeper");
         select(By.xpath("//main[@class='main']/div/sj-providers/div[2]/div/div/div[2]/form/fieldset[1]/div/select")
                 ,"zookeeper");
         type(By.name("providerName"),providerData.getName());
@@ -30,5 +29,11 @@ public class ProviderHelper extends BaseHelper{
 
     public void submitProviderCreation() {
         click(By.xpath("//main[@class='main']//button[.='Create         ']"));
+    }
+
+    public void checkProviderInList(ProviderData providerData) {
+        select(By.xpath("//main[@class='main']/div/sj-providers/div[1]/div[1]/div/div/div[1]/div[2]/sj-filter/div/select"), "zookeeper");
+        checkText(providerData.getName());
+        checkText(providerData.getDescription());
     }
 }
