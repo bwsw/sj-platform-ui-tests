@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class BaseHelper {
@@ -16,6 +15,10 @@ public class BaseHelper {
     public BaseHelper(WebDriver wd) {
 
         this.wd = wd; 
+    }
+
+    public void refreshPage() {
+        wd.get("http://stream-juggler.z1.netpoint-dc.com:18080");
     }
 
     public void click(By locator) {
@@ -42,8 +45,12 @@ public class BaseHelper {
                 .visibilityOfElementLocated(path));
     }
 
-    public void checkText(String text) {
+    public void checkTextIsPresent(String text) {
         assertTrue(wd.findElement(By.xpath("//html")).getText().contains(text));
+    }
+
+    public void checkTextIsNotPresent(String text) {
+        assertFalse(wd.findElement(By.xpath("//html")).getText().contains(text));
     }
 
     public boolean isAlertPresent() {
@@ -54,6 +61,4 @@ public class BaseHelper {
             return false;
         }
     }
-
-
 }

@@ -31,9 +31,27 @@ public class ProviderHelper extends BaseHelper{
         click(By.xpath("//main[@class='main']//button[.='Create         ']"));
     }
 
+    public void createProvider(ProviderData providerData) {
+        goToProvidersPage();
+        initProviderCreation();
+        waitForElement(By.name("providerName"));
+        fillProviderForm(providerData);
+        submitProviderCreation();
+    }
+
+    public void deleteProvider(ProviderData providerData) {
+        click(By.xpath("//tr/td[contains(text(),'"+providerData.getName()+"')]/../td[@class='actions-column']/button[@title='Delete provider']"));
+        waitForElement(By.cssSelector("button.btn.btn-danger"));
+        click(By.cssSelector("button.btn.btn-danger"));
+    }
+
     public void checkProviderInList(ProviderData providerData) {
-        select(By.xpath("//main[@class='main']/div/sj-providers/div[1]/div[1]/div/div/div[1]/div[2]/sj-filter/div/select"), "zookeeper");
-        checkText(providerData.getName());
-        checkText(providerData.getDescription());
+        checkTextIsPresent(providerData.getName());
+        checkTextIsPresent(providerData.getDescription());
+    }
+
+    public void checkProviderIsNotInList(ProviderData providerData) {
+        checkTextIsNotPresent(providerData.getName());
+        checkTextIsNotPresent(providerData.getDescription());
     }
 }
