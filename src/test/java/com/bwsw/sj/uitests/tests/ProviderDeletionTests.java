@@ -1,6 +1,7 @@
 package com.bwsw.sj.uitests.tests;
 
 import com.bwsw.sj.uitests.model.ProviderData;
+import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -17,10 +18,12 @@ public class ProviderDeletionTests extends TestBase {
     public void testProviderDeletion() {
         applicationManager.getBaseHelper().refreshPage();
         applicationManager.getProviderHelper().goToProvidersPage();
+        applicationManager.getBaseHelper().waitForElement(By.xpath("//html"));
         applicationManager.getProviderHelper().checkProviderInList(providerData);
         applicationManager.getProviderHelper().deleteProvider(providerData);
         applicationManager.getBaseHelper().refreshPage();
         applicationManager.getProviderHelper().goToProvidersPage();
+        applicationManager.getBaseHelper().waitForElement(By.xpath("//html"));
         applicationManager.getProviderHelper().checkProviderIsNotInList(providerData);
     }
 }
