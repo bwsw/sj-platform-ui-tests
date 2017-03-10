@@ -15,6 +15,7 @@ public class ProviderCreationTests  extends TestBase {
         ProviderData providerData = new ProviderData("zookeeper-auto" + System.currentTimeMillis(), "Zookeeper-auto description"  + System.currentTimeMillis(), "176.120.25.19:2181");
         applicationManager.getProviderHelper().fillProviderForm(providerData);
         applicationManager.getProviderHelper().submitProviderCreation();
+        applicationManager.getProviderHelper().checkCreationMessage(providerData);
         applicationManager.getProviderHelper().goToProvidersPage();
         applicationManager.getProviderHelper().checkProviderInList(providerData);
     }

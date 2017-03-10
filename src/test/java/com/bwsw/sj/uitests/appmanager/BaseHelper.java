@@ -53,6 +53,10 @@ public class BaseHelper {
         assertFalse(wd.findElement(By.xpath("//html")).getText().contains(text));
     }
 
+    public void checkMessage(String text) {
+        assertTrue(wd.findElement(By.xpath("//html")).getText().contains(text));
+    }
+
     public boolean isAlertPresent() {
         try {
             wd.switchTo().alert();

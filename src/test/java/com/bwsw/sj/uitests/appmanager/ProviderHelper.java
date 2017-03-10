@@ -12,6 +12,7 @@ public class ProviderHelper extends BaseHelper{
     }
 
     public void goToProvidersPage() {
+
         click(By.linkText("Providers"));
     }
 
@@ -28,11 +29,13 @@ public class ProviderHelper extends BaseHelper{
     }
 
     public void submitProviderCreation() {
+
         click(By.xpath("//main[@class='main']//button[.='Create         ']"));
     }
 
     public void createProvider(ProviderData providerData) {
         goToProvidersPage();
+        waitForElement(By.xpath("//main[@class='main']//button[.='Create Provider             ']"));
         initProviderCreation();
         waitForElement(By.name("providerName"));
         fillProviderForm(providerData);
@@ -53,5 +56,13 @@ public class ProviderHelper extends BaseHelper{
     public void checkProviderIsNotInList(ProviderData providerData) {
         checkTextIsNotPresent(providerData.getName());
         checkTextIsNotPresent(providerData.getDescription());
+    }
+
+    public void checkCreationMessage(ProviderData providerData) {
+        checkMessage("Provider '"+providerData.getName()+"' has been created.");
+    }
+
+    public void checkDeletionMessage(ProviderData providerData) {
+        checkMessage("Provider '"+providerData.getName()+"' has been deleted.");
     }
 }

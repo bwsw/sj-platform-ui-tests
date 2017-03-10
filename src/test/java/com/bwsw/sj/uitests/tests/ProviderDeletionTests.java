@@ -11,6 +11,7 @@ public class ProviderDeletionTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
+
         applicationManager.getProviderHelper().createProvider(providerData);
     }
 
@@ -21,6 +22,7 @@ public class ProviderDeletionTests extends TestBase {
         applicationManager.getBaseHelper().waitForElement(By.xpath("//html"));
         applicationManager.getProviderHelper().checkProviderInList(providerData);
         applicationManager.getProviderHelper().deleteProvider(providerData);
+        applicationManager.getProviderHelper().checkDeletionMessage(providerData);
         applicationManager.getBaseHelper().refreshPage();
         applicationManager.getProviderHelper().goToProvidersPage();
         applicationManager.getBaseHelper().waitForElement(By.xpath("//html"));
