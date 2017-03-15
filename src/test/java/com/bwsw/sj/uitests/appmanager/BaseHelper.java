@@ -18,6 +18,7 @@ public class BaseHelper {
     }
 
     public void refreshPage() {
+
         wd.get("http://stream-juggler.z1.netpoint-dc.com:18080");
     }
 

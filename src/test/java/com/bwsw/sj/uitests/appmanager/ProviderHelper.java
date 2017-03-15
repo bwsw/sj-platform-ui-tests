@@ -48,6 +48,10 @@ public class ProviderHelper extends BaseHelper{
         click(By.cssSelector("button.btn.btn-danger"));
     }
 
+    public void connectionProvider(ProviderData providerData) {
+        click(By.xpath("//tr/td[contains(text(),'"+providerData.getName()+"')]/../td[@class='actions-column']/button[@title='Test connection']"));
+    }
+
     public void checkProviderInList(ProviderData providerData) {
         checkTextIsPresent(providerData.getName());
         checkTextIsPresent(providerData.getDescription());
@@ -64,5 +68,9 @@ public class ProviderHelper extends BaseHelper{
 
     public void checkDeletionMessage(ProviderData providerData) {
         checkMessage("Provider '"+providerData.getName()+"' has been deleted.");
+    }
+
+    public void checkConnectionMessage(ProviderData providerData) {
+        checkMessage("ProviderModel '"+providerData.getName()+"' is available");
     }
 }

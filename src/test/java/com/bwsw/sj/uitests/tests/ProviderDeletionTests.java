@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class ProviderDeletionTests extends TestBase {
 
-    ProviderData providerData = new ProviderData("zookeeper-auto" + System.currentTimeMillis(), "Zookeeper-auto description"  + System.currentTimeMillis(), "176.120.25.19:2181");
+    ProviderData providerData = new ProviderData("zookeeper-auto-deletion" + System.currentTimeMillis(), "Zookeeper-auto description"  + System.currentTimeMillis(), "176.120.25.19:2181");
 
     @BeforeMethod
     public void ensurePreconditions() {
