@@ -46,16 +46,16 @@ public class BaseHelper {
                 .visibilityOfElementLocated(path));
     }
 
-    public void checkTextIsPresent(String text) {
-        assertTrue(wd.findElement(By.xpath("//html")).getText().contains(text));
+    public void checkTextIsPresent(String text, By locator) {
+        assertTrue(wd.findElement(locator).getText().contains(text));
     }
 
-    public void checkTextIsNotPresent(String text) {
-        assertFalse(wd.findElement(By.xpath("//html")).getText().contains(text));
+    public void checkTextIsNotPresent(String text, By locator) {
+        assertFalse(wd.findElement(locator).getText().contains(text));
     }
 
-    public void checkMessage(String text) {
-        assertTrue(wd.findElement(By.xpath("//html")).getText().contains(text));
+    public void checkMessage(String text, By locator) {
+        assertTrue(wd.findElement(locator).getText().contains(text));
     }
 
     public boolean isAlertPresent() {

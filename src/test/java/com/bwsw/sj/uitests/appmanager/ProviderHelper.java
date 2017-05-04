@@ -53,24 +53,24 @@ public class ProviderHelper extends BaseHelper{
     }
 
     public void checkProviderInList(ProviderData providerData) {
-        checkTextIsPresent(providerData.getName());
-        checkTextIsPresent(providerData.getDescription());
+        checkTextIsPresent(providerData.getName(), By.xpath("//div[@class='table-wrapper']"));
+        checkTextIsPresent(providerData.getDescription(),  By.xpath("//div[@class='table-wrapper']"));
     }
 
     public void checkProviderIsNotInList(ProviderData providerData) {
-        checkTextIsNotPresent(providerData.getName());
-        checkTextIsNotPresent(providerData.getDescription());
+        checkTextIsNotPresent(providerData.getName(),  By.xpath("//div[@class='table-wrapper']"));
+        checkTextIsNotPresent(providerData.getDescription(),  By.xpath("//div[@class='table-wrapper']"));
     }
 
     public void checkCreationMessage(ProviderData providerData) {
-        checkMessage("Provider '"+providerData.getName()+"' has been created.");
+        checkMessage("Provider '"+providerData.getName()+"' has been created.",  By.xpath("//sj-alerts"));
     }
 
     public void checkDeletionMessage(ProviderData providerData) {
-        checkMessage("Provider '"+providerData.getName()+"' has been deleted.");
+        checkMessage("Provider '"+providerData.getName()+"' has been deleted.", By.xpath("//sj-alerts"));
     }
 
     public void checkConnectionMessage(ProviderData providerData) {
-        checkMessage("ProviderModel '"+providerData.getName()+"' is available");
+        checkMessage("ProviderModel '"+providerData.getName()+"' is available", By.xpath("//sj-alerts"));
     }
 }
