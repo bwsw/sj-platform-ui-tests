@@ -4,6 +4,8 @@ import com.bwsw.sj.uitests.model.ProviderData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class ProviderHelper extends BaseHelper{
 
     public ProviderHelper (FirefoxDriver wd) {
@@ -72,5 +74,17 @@ public class ProviderHelper extends BaseHelper{
 
     public void checkConnectionMessage(ProviderData providerData) {
         checkMessage("ProviderModel '"+providerData.getName()+"' is available", By.xpath("//sj-alerts"));
+    }
+
+    public void checkProviderDetails(ProviderData providerData) {
+        waitForElement(By.xpath("//div[@class='overflow-x-scroll']/ul/li[contains(text(),'"+providerData.getName()+"')]"));
+        checkTextIsPresent("Name: "+providerData.getName(), By.xpath("//div[@class='overflow-x-scroll']"));
+        checkTextIsPresent("Type: zookeeper", By.xpath("//div[@class='overflow-x-scroll']"));
+        checkTextIsPresent("Description: "+providerData.getDescription(), By.xpath("//div[@class='overflow-x-scroll']"));
+        checkTextIsPresent(providerData.getHost(), By.xpath("//div[@class='overflow-x-scroll']"));
+    }
+
+    public void selectProviderFromList(ProviderData providerData) {
+        click(By.xpath("//tr/td[contains(text(),'"+providerData.getName()+"')]"));
     }
 }

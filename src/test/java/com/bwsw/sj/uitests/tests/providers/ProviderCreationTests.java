@@ -1,10 +1,15 @@
-package com.bwsw.sj.uitests.tests;
+package com.bwsw.sj.uitests.tests.providers;
 
 import com.bwsw.sj.uitests.model.ProviderData;
+import com.bwsw.sj.uitests.tests.TestBase;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
 public class ProviderCreationTests  extends TestBase {
+
+    ProviderData providerData = new ProviderData("zookeeper-auto-creation" + System.currentTimeMillis(), "Zookeeper-auto description"  + System.currentTimeMillis(), "176.120.25.19:2181");
 
     @Test
     public void testProviderCreation() {
@@ -12,11 +17,13 @@ public class ProviderCreationTests  extends TestBase {
         applicationManager.getBaseHelper().waitForElement(By.xpath("//main[@class='main']//button[.='Create Provider             ']"));
         applicationManager.getProviderHelper().initProviderCreation();
         applicationManager.getBaseHelper().waitForElement(By.name("providerName"));
-        ProviderData providerData = new ProviderData("zookeeper-auto-creation" + System.currentTimeMillis(), "Zookeeper-auto description"  + System.currentTimeMillis(), "176.120.25.19:2181");
         applicationManager.getProviderHelper().fillProviderForm(providerData);
         applicationManager.getProviderHelper().submitProviderCreation();
+        applicationManager.getBaseHelper().waitForElement(By.xpath("//html"));
         applicationManager.getProviderHelper().checkCreationMessage(providerData);
         applicationManager.getProviderHelper().goToProvidersPage();
         applicationManager.getProviderHelper().checkProviderInList(providerData);
+        applicationManager.getProviderHelper().selectProviderFromList(providerData);
+        applicationManager.getProviderHelper().checkProviderDetails(providerData);
     }
 }
