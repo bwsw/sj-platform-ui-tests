@@ -1,4 +1,4 @@
-package com.bwsw.sj.uitests.tests.providers;
+package com.bwsw.sj.uitests.tests.providers.zookeeper;
 
 import com.bwsw.sj.uitests.model.ProviderData;
 import com.bwsw.sj.uitests.tests.TestBase;
@@ -6,9 +6,9 @@ import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class ProviderDeletionTests extends TestBase {
+public class ZookeeperProviderDeletionTests extends TestBase {
 
-    ProviderData providerData = new ProviderData("zookeeper-auto-deletion" + System.currentTimeMillis(), "Zookeeper-auto description"  + System.currentTimeMillis(), "176.120.25.19:2181");
+    ProviderData providerData = new ProviderData("zookeeper-auto-deletion" + System.currentTimeMillis(), "Zookeeper-auto description"  + System.currentTimeMillis(), "176.120.25.19:2181", "zookeeper");
 
     @BeforeMethod
     public void ensurePreconditions() {

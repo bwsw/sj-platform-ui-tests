@@ -24,7 +24,7 @@ public class ProviderHelper extends BaseHelper{
 
     public void fillProviderForm(ProviderData providerData) {
         select(By.xpath("//main[@class='main']/div/sj-providers/div[2]/div/div/div[2]/form/fieldset[1]/div/select")
-                ,"zookeeper");
+                ,providerData.getType());
         type(By.name("providerName"),providerData.getName());
         type(By.name("providerDescription"),providerData.getDescription());
         type(By.xpath("//main[@class='main']/div/sj-providers/div[2]/div/div/div[2]/form/fieldset[4]/div/div/input"),providerData.getHost());
@@ -79,7 +79,7 @@ public class ProviderHelper extends BaseHelper{
     public void checkProviderDetails(ProviderData providerData) {
         waitForElement(By.xpath("//div[@class='overflow-x-scroll']/ul/li[contains(text(),'"+providerData.getName()+"')]"));
         checkTextIsPresent("Name: "+providerData.getName(), By.xpath("//div[@class='overflow-x-scroll']"));
-        checkTextIsPresent("Type: zookeeper", By.xpath("//div[@class='overflow-x-scroll']"));
+        checkTextIsPresent("Type: "+providerData.getType(), By.xpath("//div[@class='overflow-x-scroll']"));
         checkTextIsPresent("Description: "+providerData.getDescription(), By.xpath("//div[@class='overflow-x-scroll']"));
         checkTextIsPresent(providerData.getHost(), By.xpath("//div[@class='overflow-x-scroll']"));
     }

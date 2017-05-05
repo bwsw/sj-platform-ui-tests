@@ -4,11 +4,13 @@ public class ProviderData {
     private final String name;
     private final String description;
     private final String host;
+    private final String type;
 
-    public ProviderData(String name, String description, String host) {
+    public ProviderData(String name, String description, String host, String type) {
         this.name = name;
         this.description = description;
         this.host = host;
+        this.type = type;
     }
 
     public String getName() {
@@ -24,5 +26,10 @@ public class ProviderData {
     public String getHost() {
 
         return host;
+    }
+
+    public String getType() {
+
+        return type;
     }
 }

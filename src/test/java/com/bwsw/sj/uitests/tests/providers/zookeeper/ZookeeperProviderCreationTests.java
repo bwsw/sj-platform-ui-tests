@@ -1,15 +1,13 @@
-package com.bwsw.sj.uitests.tests.providers;
+package com.bwsw.sj.uitests.tests.providers.zookeeper;
 
 import com.bwsw.sj.uitests.model.ProviderData;
 import com.bwsw.sj.uitests.tests.TestBase;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
+public class ZookeeperProviderCreationTests extends TestBase {
 
-public class ProviderCreationTests  extends TestBase {
-
-    ProviderData providerData = new ProviderData("zookeeper-auto-creation" + System.currentTimeMillis(), "Zookeeper-auto description"  + System.currentTimeMillis(), "176.120.25.19:2181");
+    ProviderData providerData = new ProviderData("zookeeper-auto-creation" + System.currentTimeMillis(), "Zookeeper-auto description"  + System.currentTimeMillis(), "176.120.25.19:2181", "zookeeper");
 
     @Test
     public void testProviderCreation() {
