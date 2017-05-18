@@ -87,4 +87,16 @@ public class ProviderHelper extends BaseHelper{
     public void selectProviderFromList(ProviderData providerData) {
         click(By.xpath("//tr/td[contains(text(),'"+providerData.getName()+"')]"));
     }
+
+    public void searchProvider(ProviderData providerData) {
+        type(By.xpath("//input[@placeholder='Search']"), providerData.getName());
+        checkTextIsPresent(providerData.getName(), By.xpath("//div[@class='table-wrapper']"));
+        checkElementsCount(1, By.xpath("//div[@class='table-wrapper']/table/tbody/tr"));
+    }
+
+    public void searchNonexistentProvider(ProviderData providerData) {
+        type(By.xpath("//input[@placeholder='Search']"),"non exist" + System.currentTimeMillis());
+        checkTextIsNotPresent(providerData.getName(), By.xpath("//div[@class='table-wrapper']"));
+        //checkElementIsNotPresent( By.xpath("//div[@class='table-wrapper']/table/tbody/tr"));
+    }
 }

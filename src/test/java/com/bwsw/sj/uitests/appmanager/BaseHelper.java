@@ -21,7 +21,7 @@ public class BaseHelper {
 
     public void refreshPage() {
 
-        wd.get("http://stream-juggler.z1.netpoint-dc.com:18080");
+        wd.get("http://stream-juggler.z1.netpoint-dc.com:28080");
     }
 
     public void click(By locator) {
@@ -60,6 +60,15 @@ public class BaseHelper {
 
         assertTrue(wd.findElement(locator).getText().contains(text));
     }
+
+    public void checkElementsCount (Integer count, By locator) {
+        Integer listsize = wd.findElements(locator).size();
+        assertEquals (count, listsize);
+    }
+
+   // public void checkElementIsNotPresent (By locator) {
+    //    assertTrue(wd.findElements(locator).isEmpty());
+   // }
 
     public void sleep() {
         wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);

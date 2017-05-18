@@ -13,7 +13,7 @@ public class ApplicationManager {
     public void init() {
         wd = new FirefoxDriver();
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        wd.get("http://stream-juggler.z1.netpoint-dc.com:18080");
+        wd.get("http://stream-juggler.z1.netpoint-dc.com:28080");
         providerHelper = new ProviderHelper(wd);
         baseHelper = new BaseHelper(wd);
     }
